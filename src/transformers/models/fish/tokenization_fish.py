@@ -4,10 +4,9 @@ import base64
 import json
 from pathlib import Path
 import tiktoken
+import os
 
 from typing import Union, List
-
-from ...tokenization_utils import PreTrainedTokenizer
 
 FISH_TIKTOKEN_PATTERN = "|".join(
     [
@@ -95,10 +94,10 @@ class FishTokenizer(PreTrainedTokenizer)
     def get_token_id(self, token: str) -> int:
         return self.all_special_tokens_with_ids[token]
 
-    def tokenize(text: str) -> List[str]:
+    def tokenize(text: str, tiktoken_max_encode_chars: int = TIKTOKEN_MAX_ENCODE_CHARS) -> List[str]:
         subs = []
-        for i in range(0, len(text), TIKTOKEN_MAX_ENCODE_CHARS):
-            subs.append(text[i : i + TIKTOKEN_MAX_ENCODE_CHARS])
+        for i in range(0, len(text), tiktoken_max_encode_chars):
+            subs.append(text[i : i + tiktoken_max_encode_chars])
         return subs
 
     def convert_tokens_to_ids(self, tokens: List[str], allowed_special: bool | set[str] = True) -> List[int]:
