@@ -157,6 +157,7 @@ _import_structure = {
     ],
     # Models
     "models": [],
+    "models.fish": ["FishTokenizer"],
     "models.albert": ["AlbertConfig"],
     "models.align": [
         "AlignConfig",
