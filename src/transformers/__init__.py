@@ -5037,6 +5037,9 @@ if TYPE_CHECKING:
         load_tf2_model_in_pytorch_model,
         load_tf2_weights_in_pytorch_model,
     )
+    from .models.fish import (
+        FishTokenizer
+    )
     from .models.albert import AlbertConfig
     from .models.align import (
         AlignConfig,
