@@ -61,7 +61,7 @@ ALL_SPECIAL_TOKENS = [
     *SEMANTIC_TOKENS,
 ]
 
-class FishTokenizer(PreTrainedTokenizer)
+class FishTokenizer:
     def __init__(self, model_path: str) -> None:
         mergeable_ranks = self.load_tiktoken_bpe(model_path)
         special_token_begin = len(mergeable_ranks)
